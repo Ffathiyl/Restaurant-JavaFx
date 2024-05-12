@@ -1,0 +1,565 @@
+@font-face {
+    font-family: 'ReggaeOne';
+    src: url('Assets/font/ReggaeOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Kato';
+    src: url('Assets/font/kato.ttf');
+}
+@font-face {
+    font-family: 'Nigato';
+    src: url('Assets/font/Niagato.ttf');
+}
+@font-face {
+    font-family: 'Masmuseh';
+    src: url('Assets/font/Masmuseh.otf');
+}
+#logokecil{
+    -fx-font-family: 'Kato';
+    -fx-font-size: 24px;
+}
+#labellogokecil{
+    -fx-font-size: 12px;
+    -fx-font-weight: normal;
+}
+
+#login{
+    -fx-font-family: 'Kato';
+    -fx-font-size: 64px;
+}
+#logo{
+    -fx-font-family: 'Kato';
+    -fx-font-size: 46px;
+}
+#labellogo{
+    -fx-font-size: 20px;
+}
+#usernameLogin,#passwordLogin{
+    -fx-font-size: 28px;
+}
+#txtUsername,#txtPassword{
+    -fx-pref-height: 20px;
+    -fx-pref-width: 500px;
+    -fx-prompt-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+}
+.text-field{
+    -fx-pref-height: 20px;
+    -fx-pref-width: 200px;
+    -fx-prompt-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+
+}
+.text-field:focused {
+    -fx-border-color: black;
+    -fx-border-width: 3px;
+    -fx-effect: dropshadow(three-pass-box, rgb(255, 214, 127), 10, 0.3, 0.3, 0.7);
+}
+.label{
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+.button-data{
+    -fx-pref-height: 47px;
+    -fx-background-color: #E7B10A;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+/* Hover Animation */
+.button-data:hover {
+    -fx-background-color: #FFD933;
+}
+#buttonLogin {
+    -fx-background-color: #E7B10A;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+#btnTambah,#btnUbah,#btnClear
+{
+    -fx-background-color: #0e79b2;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 14px;
+    -fx-pref-width: 90px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+#btnHapus
+{
+    -fx-background-color: #e71d36;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 14px;
+    -fx-pref-width: 90px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+#sd
+{
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+}
+
+#hd
+{
+    -fx-border-color: black;
+    -fx-border-width: 0 0 1px 0;
+}
+
+#btnHomeKasir, #btnKeluarKasir, #btnMenuKasir, #btnTransactionKasir
+{
+    -fx-background-color: #0e79b2;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 14px;
+    -fx-pref-width: 170px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+/* Hover Animation */
+#buttonLogin:hover {
+    -fx-background-color: #FFD933;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+/* Click Animation */
+#buttonLogin:pressed {
+    -fx-background-color: #f6efee;
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+}
+.custom-alert .alert-content {
+    -fx-font-size: 36px; /* Ganti dengan ukuran font yang diinginkan */
+}
+
+
+.navbar{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
+/*---------------------------------------*/
+
+/*-----------  MENU NAVBAR  --------------*/
+.menu-nav{
+    -fx-background-color: #ffffff;
+    -fx-font-family: 'MingLiU_HKSCS-ExtB';
+    -fx-text-fill: black;
+    -fx-font-size: 21px;
+}
+.menu-nav:hover{
+    /*-fx-border-color: #f0ad4e;*/
+    /*-fx-border-width: 0px 0px 3px 0px;*/
+    -fx-background-color: rgba(245, 245, 0, 0.2);
+}
+.menu-nav:pressed{
+    -fx-border-color: #14171D;
+    -fx-border-width: 0px 0px 4px 0px;
+    -fx-background-color: rgba(245, 245, 0, 0.2);
+}
+
+.menu-logo{
+    -fx-background-color: #ffffff;
+}
+.menu-button-login{
+    -fx-background-color: rgba(245, 245, 0, 0.2);
+    -fx-background-radius: 50px;
+    -fx-text-fill: #f0ad4e;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+.menu-button-login:hover{
+    -fx-background-color: rgba(245, 245, 0, 0.3);
+}
+
+.boxx{
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-effect: dropshadow(gaussian, rgba(252, 202, 3, 0.3), 10, 0, 0, 0);
+}
+
+/*COMBO BOX*/
+.combo-box-popup {
+    -fx-background-color: rgba(255, 255, 255, 0.5);/* Warna latar belakang Popup */
+    -fx-border-color: #ffffff; /* Warna border Popup */
+    -fx-border-width: 1px; /* Lebar border Popup */
+    -fx-effect: dropshadow(three-pass-box, rgb(255, 192, 94), 5, 0, 0, 0); /* Efek bayangan untuk Popup */
+    -fx-padding: 5px; /* Padding di dalam Popup */
+    -fx-max-height: 200px; /* Tinggi maksimal Popup */
+}
+.combo-box-popup .list-view{
+    -fx-background-color: rgba(255, 255, 255, 0.9); /* Warna latar belakang ListView di dalam Popup */
+    -fx-text-fill: #ffffff; /* Warna teks ListView di dalam Popup */
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.5); /* Warna latar belakang ListView di dalam Popup */
+    -fx-text-fill: black; /* Warna teks ListView di dalam Popup */
+}
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: rgba(255, 132, 0, 0.25);
+    -fx-text-fill: black;/* ffc787Warna latar belakang saat mouse hover di atas List Cell di dalam Popup */
+    -fx-font-weight: bold;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: rgba(255, 190, 0, 0.5);
+    -fx-font-weight: bold;/* Warna teks saat List Cell dipilih di dalam Popup */
+}
+/* Styling untuk TableView */
+#menuTable, #karyawanTable,#promoTable,#voucherTable,#lokasiTable,#rewardTable,#pelangganTable,#trpelangganTable,#trpelangganTable12,
+#trpelangganTable1,#trpelangganTable11,#voucherTable,#voucherTable1,#keranjangVoucher,#keranjangMenu,#detailMenuTable,#promoActiveTable,
+#transaksiTableView,#transaksiMemberTableView,#detailTrVoucher,#transaksiTrVoucher,#transaksiReward,#membership,#tableMenu
+{
+    -fx-table-cell-border-color: transparent; /* Menghilangkan border antar sel */
+    -fx-font-size: 14   px;
+    -fx-border-color: white;
+    -fx-border-width: 0.1;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.3), 10, 0, 0, 0);
+}
+
+/* Styling untuk TableColumn */
+#idMenuColumn,#detailMenuColumn,#hargaColumn,#kategoriColumn,#alamatKaryawanColumn,
+#idKaryawanColumn,#jeniKelaminKaryawanColumn,#usernameKaryawanColumn,#teleponKaryawanColumn,
+#roleKaryawanColumn,#namaKaryawanColumn,#menuColumn,#statusColumn,#passwordKaryawanColumn,
+#idPromoColumn,#jenisPromoColumn,#waktuMulaiPromoColumn,#waktuBerahirPromoColumn,#discountPromoColumn,#persyaratanPromoColumn,
+#idVoucherColumn,#namaVoucherColumn,#hargaVoucherColumn,#nilaiVoucherColumn,#endDateColumn,#idMenuVColumn,#idLokasiVColumn,
+#idLokasiColumn,#namaLokasiColumn,#biayaPengirimanColumn,
+#idRewardColumn,#namaRewardColumn,#deskripsiRewardColumn,#minimalPoinColumn,
+#idPelangganColumn,#alamatPelangganColumn,#namaPelangganColumn,#teleponPelangganColumn,#statusMemberPelangganColumn,#jenisKelaminPelangganColumn,#poinPelangganColumn,#voucherPelangganColumn,
+#tridPelangganColumn,#tralamatPelangganColumn,#trnamaPelangganColumn,#trteleponPelangganColumn,#trstatusMemberPelangganColumn,#trjenisKelaminPelangganColumn,#trpoinPelangganColumn,#trvoucherPelangganColumn,
+#tridPelangganColumn1,#tralamatPelangganColumn1,#trnamaPelangganColumn1,#trteleponPelangganColumn1,#trstatusMemberPelangganColumn1,#trjenisKelaminPelangganColumn1,#trpoinPelangganColumn1,#trvoucherPelangganColumn1,
+#idVoucherColumn,#namaVoucherColumn,#nilaiVoucherColumn,#hargaVoucherColumn,#endDateColumn,#menuVoucherColumn,#lokasiVouchereColumn,
+#idVoucherColumn1,#namaVoucherColumn1,#nilaiVoucherColumn1,#hargaVoucherColumn1,#endDateColumn1,#menuVoucherColumn1,#lokasiVoucherColumn1,#jumlahVoucherColumn1,
+#tridVoucherColumn,#idvoucherColumn,#trquantityVoucherColumn,#trsubTotalVoucherColumn,#trhargavoucherColumn,#deleteColumn,#editQuantityColumn,
+#tridPelangganColumn11,#tralamatPelangganColumn11,#trnamaPelangganColumn11,#trteleponPelangganColumn11,#trstatusMemberPelangganColumn11,#trjenisKelaminPelangganColumn11,#trpoinPelangganColumn11,#trvoucherPelangganColumn11,
+#tridMenuColumn,#idmenuColumn,#trhargaMenuColumn,#quantityMenuColumn,#trsubTotalMenuColumn,#editQuantityColumn1,#deleteColumn1,
+#tridPelangganColumn12,#tralamatPelangganColumn12,#trnamaPelangganColumn12,#trteleponPelangganColumn12,#trstatusMemberPelangganColumn12,#trjenisKelaminPelangganColumn12,#trpoinPelangganColumn12,#trvoucherPelangganColumn12,
+#idTransaksiColumn,#idMenuTrColumn,#quantityColumn,#subTotalColumn,
+#idPromoDashboard,#namePromoDashboard,#discountPromoColumnDashboard,#persyaratanPromoColumnDashboard,#waktuMulaiPromoColumnDashboard,#waktuBerahirPromoColumnDashboard,
+#idTransaksiMenuColumn,#idPelangganMenuColumn,#idMemberMenuColumn,#idVoucherMenuColumn,#idLokasiMenuColumn,#idKaryawanMenuColumn,#totalMenuColumn,#tanggalTransaksiMenuColumn,
+#idTransaksiMemberColumn,#idPelangganMemberColumn,#jenisMemberColumn,#benefitColumn,#tenggatHariColumn,#totalColumn,#tanggalTransaksiColumn,#expireDateColumn,
+#idTransaksiVoucherColumnTr,#idVoucherColumnTr,#jumlahColumnTr,#subTotalVoucherColumnTr,
+#idTrsVoucherColumnTr,#idPelangganColumnTr,#totalColumnTr,#tanggalTransaksiColumnTr,
+#idTransaksiRewardColumn,#idPelangganRewardColumn,#idRewardRewardColumn,#tanggalTransaksiRewardColumn,
+#memberIdColumn,#customerIdColumn,#customerNameColumn,#membershipType,#benefitMember,#expireDate,
+#mnu_id,#mnu_nama,#mnu_jenis,#mnu_deskripsi,#mnu_harga,#mnu_status,#mnu_stok
+{
+    -fx-alignment: CENTER; /* Posisi teks di tengah kolom */
+    -fx-background-color: transparent;
+}
+
+
+
+/* Styling untuk header kolom */
+.table-view .column-header .label {
+    -fx-font-size: 14px;
+    -fx-background-color: #0e79b2; /* Warna latar belakang */
+    -fx-text-fill: white; /* Warna teks */
+    -fx-font-weight: bold;
+}
+.table-view .column-header-background {
+    -fx-background-color: #0e79b2; /* Warna latar belakang */
+}
+/* Styling untuk judul kolom */
+.table-column .label {
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+/* Styling untuk sel ganjil */
+.table-row-cell:odd {
+    -fx-background-color: rgba(255, 255, 255, 0.7); /* Warna latar belakang */
+    -fx-effect: dropshadow(gaussian, rgba(252, 202, 3, 0.3), 10, 0, 0, 0);
+
+}
+/* Styling untuk sel genap */
+.table-row-cell:even {
+    -fx-background-color: rgba(255, 255, 255, 0.8); /* Warna latar belakang */
+    -fx-effect: dropshadow(gaussian, rgba(252, 202, 3, 0.3), 10, 0, 0, 0);
+
+}
+/* Styling saat cursor diarahkan ke sel */
+.table-row-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.9); /* Warna latar belakang */
+}
+/* Styling saat sel dipilih */
+.table-row-cell:selected {
+    -fx-background-color: rgba(245, 245, 0, 0.5);
+    -fx-text-fill: white; /* Warna teks */
+    -fx-font-weight: bold;
+}
+
+/*  DATE PICKER  */
+.date-picker {
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #E7B10A;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+    -fx-background-insets: 0;
+}
+.date-picker .arrow-button:hover {
+    -fx-background-color: #FFD933;
+}
+
+.date-picker .arrow {
+    -fx-padding: 4px;
+}
+
+.date-picker .day-cell {
+    -fx-font-size: 14px;
+}
+
+.date-picker .day-cell:hover {
+    -fx-background-color: rgb(255, 132, 0);
+}
+
+.date-picker .selected-day {
+    -fx-background-color: transpatent;
+    -fx-text-fill: white;
+}
+
+.date-picker .selected-day:hover {
+    -fx-background-color: #c01584;
+}
+
+.date-picker .today {
+    -fx-background-color: rgb(245, 188, 0);
+}
+
+.date-picker .today:hover {
+    -fx-background-color: #e0a34c; /* Warna latar belakang */
+}
+/* TAB PANE */
+/* File: style.css */
+
+.tab-pane {
+    -fx-tab-min-height: 40;
+    -fx-tab-max-height: 40;
+    -fx-tab-max-width: 200;
+    -fx-tab-min-width: 200;
+}
+.tab-pane .anchor-pane{
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab .tab-label:selected {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 10;
+    -fx-background-color: #E7B10A;
+    -fx-border-width: 3px;
+    -fx-text-fill: white;
+    -fx-border-color: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+}
+
+.tab-pane .tab {
+    -fx-background-color: #E7B10A;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 1;
+    -fx-text-fill: #FFFFFF;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #FFD933;
+}
+
+/* Style untuk konten tab "Transaction" */
+/*.tab-pane .tab-content-area .tab-pane.content .anchor-pane {*/
+/*    -fx-background-color: rgba(20, 23, 29, 0);*/
+/*}*/
+
+.tab-pane .tab-content-area .tab-pane.content .button {
+    -fx-background-color: #E7B10A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+
+.tab-pane .tab-content-area .tab-pane.content .button:hover {
+    -fx-background-color: #FFD933;
+}
+.tab-pane .tab-content-area .tab-pane.content .anchor-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-content-area .tab-pane.content .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Nigato';
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+    -fx-transition: background-color 0.3s, -fx-scale-x 0.3s, -fx-scale-y 0.3s;
+}
+
+.tab-pane .tab-content-area .tab-pane.content .button:hover {
+    -fx-background-color: #FFD933;
+}
+
+/*bg awal agak gelap*/
+.image-view {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+.buttonM {
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+    -fx-border-color: transparent;
+    -fx-padding: 10px;
+}
+
+.buttonM:hover {
+    -fx-background-color: rgba(245, 212, 0, 0.4);
+}
+
+.buttonM .graphic .image-view {
+    -fx-fit-height: 100;
+    -fx-fit-width: 100;
+}
+
+.buttonM .tooltip {
+    -fx-font-size: 14px;
+    -fx-background-color: #000000AA;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+}
+/* chart_style.css */
+
+/* Set font size for chart title */
+.chart-title {
+    -fx-font-size: 16px; /* Replace with your desired font size */
+}
+
+/* Set font size for x-axis and y-axis labels */
+.axis-label {
+    -fx-font-size: 14px; /* Replace with your desired font size */
+}
+
+/* Set font size for tick labels on the axes */
+.axis-tick-label {
+    -fx-font-size: 12px; /* Replace with your desired font size */
+}
+.default-color0.chart-series-line {
+    -fx-stroke-width: 0; /* Remove the series line from the legend */
+}
+
+.default-color0.chart-legend-item {
+    -fx-font-size: 14px; /* Adjust the font size here as desired */
+}
+
+#revenueChartMember .chart-bar {
+    -fx-bar-fill: rgba(0, 120, 240, 0.8); /* Replace rgba(0, 120, 240, 0.8) with your desired bar fill color (blue) and alpha value */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2); /* Adjust the drop shadow effect parameters as needed */
+}
+
+#revenueChartMember .axis {
+    -fx-label-font-size: 12px; /* Adjust the font size for axis labels */
+}
+
+#revenueChartMember .axis-label {
+    -fx-font-size: 12px; /* Adjust the font size for data labels */
+}
+
+
+#revenueChartTransaction .chart-bar {
+    -fx-bar-fill: #00ff00; /* Replace #00ff00 with your desired default bar fill color */
+}
+
+#revenueChartTransaction .axis {
+    -fx-label-font-size: 12px; /* Adjust the font size for axis labels */
+}
+
+#revenueChartTransaction .axis-label {
+    -fx-font-size: 12px; /* Adjust the font size for data labels */
+}
+
+
+
+#revenueChartTotal .chart-bar {
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 0, 1), rgba(255, 255, 0, 0.7)); /* Yellow gradient */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2); /* Adjust the drop shadow effect parameters as needed */
+}
+
+#revenueChartTotal .axis {
+    -fx-label-font-size: 12px; /* Adjust the font size for axis labels */
+}
+
+#revenueChartTotal .axis-label {
+    -fx-font-size: 12px; /* Adjust the font size for data labels */
+}
+
+#menuChart .chart-bar {
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 200, 0, 1), rgba(255, 165, 0, 0.5)); /* Orange gradient */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2); /* Adjust the drop shadow effect parameters as needed */
+}
+
+#menuChart .axis {
+    -fx-label-font-size: 12px; /* Adjust the font size for axis labels */
+}
+
+#menuChart .axis-label {
+    -fx-font-size: 12px; /* Adjust the font size for data labels */
+}
+
+#pendapatanHariIni,#pemesananHariIni,#jumlahKurir,#jumlahMember {
+    -fx-background-color: linear-gradient(to right, orange, yellow);
+    -fx-background-radius: 30px;
+}
+
+

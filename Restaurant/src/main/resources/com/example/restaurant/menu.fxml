@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="584.0" prefWidth="929.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurant.menu.MenuController">
+   <children>
+      <VBox prefHeight="584.0" prefWidth="176.0">
+         <children>
+            <AnchorPane prefHeight="587.0" prefWidth="176.0">
+               <children>
+                  <Button fx:id="btnTambah" layoutX="14.0" layoutY="471.0" mnemonicParsing="false" onAction="#onClickTambah" text="Tambah" />
+                  <TextField fx:id="txtStokMenu" layoutX="14.0" layoutY="414.0" prefHeight="25.0" prefWidth="153.0" />
+                  <Label layoutX="15.0" layoutY="384.0" prefHeight="17.0" prefWidth="153.0" text="Stock Menu" />
+                  <TextField fx:id="txtHargaMenu" layoutX="14.0" layoutY="344.0" />
+                  <Label layoutX="15.0" layoutY="314.0" prefHeight="17.0" prefWidth="153.0" text="Harga Menu" />
+                  <ComboBox fx:id="cbJenisMenu" layoutX="16.0" layoutY="288.0" prefHeight="17.0" prefWidth="170.0" />
+                  <Label layoutX="18.0" layoutY="258.0" prefHeight="17.0" prefWidth="153.0" text="Jenis Menu" />
+                  <TextField fx:id="txtDeskripsiMenu" layoutX="16.0" layoutY="218.0" prefHeight="25.0" prefWidth="153.0" />
+                  <Label layoutX="15.0" layoutY="188.0" prefHeight="17.0" prefWidth="153.0" text="Deskripsi Menu" />
+                  <TextField fx:id="txtNamaMenu" layoutX="16.0" layoutY="147.0" prefHeight="25.0" prefWidth="153.0" />
+                  <Label layoutX="18.0" layoutY="117.0" prefHeight="17.0" prefWidth="153.0" text="Nama Menu" />
+                  <TextField fx:id="txtIdMenu" layoutX="18.0" layoutY="72.0" prefWidth="258.0" />
+                  <Label layoutX="18.0" layoutY="42.0" prefHeight="17.0" prefWidth="153.0" text="ID Menu" />
+                  <Button fx:id="btnUbah" layoutX="118.0" layoutY="471.0" mnemonicParsing="false" onAction="#onClickUbah" text="Ubah" />
+                  <Button fx:id="btnHapus" layoutX="118.0" layoutY="521.0" mnemonicParsing="false" onAction="#onClickHapus" text="Hapus" />
+                  <Button fx:id="btnClear" layoutX="14.0" layoutY="521.0" mnemonicParsing="false" onAction="#onClickClear" text="Clear" />
+               </children>
+            </AnchorPane>
+         </children></VBox>
+      <AnchorPane layoutX="230.0" prefHeight="584.0" prefWidth="649.0">
+         <children>
+            <TableView fx:id="tableMenu" layoutX="14.0" layoutY="41.0" onMouseClicked="#onClickTable" prefHeight="502.0" prefWidth="723.0">
+              <columns>
+                <TableColumn fx:id="mnu_id" prefWidth="63.333343505859375" text="ID Menu" />
+                <TableColumn fx:id="mnu_nama" prefWidth="158.66665649414062" text="Nama Menu" />
+                  <TableColumn fx:id="mnu_deskripsi" minWidth="0.0" prefWidth="167.33331298828125" text="Deskripsi Menu" />
+                  <TableColumn fx:id="mnu_jenis" minWidth="0.0" prefWidth="81.3333740234375" text="Jenis Menu" />
+                  <TableColumn fx:id="mnu_harga" minWidth="0.0" prefWidth="89.3333740234375" text="Harga Menu" />
+                  <TableColumn fx:id="mnu_stok" prefWidth="89.33331298828125" text="Stok Menu" />
+                  <TableColumn fx:id="mnu_status" minWidth="7.33331298828125" prefWidth="72.66668701171875" text="Status" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
