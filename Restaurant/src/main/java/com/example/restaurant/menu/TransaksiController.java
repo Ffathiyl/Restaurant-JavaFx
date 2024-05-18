@@ -90,10 +90,12 @@ public class TransaksiController implements Initializable {
 
             while(connection.result.next()){
                 i++;
-                listMenu.add(new Menu(connection.result.getInt("mnu_id"),
-                        connection.result.getString("mnu_nama"),
-                        connection.result.getInt("mnu_stok"),
-                        connection.result.getInt("mnu_harga")));
+                if(connection.result.getInt("mnu_status") == 1){
+                    listMenu.add(new Menu(connection.result.getInt("mnu_id"),
+                            connection.result.getString("mnu_nama"),
+                            connection.result.getInt("mnu_stok"),
+                            connection.result.getInt("mnu_harga")));
+                }
             }
             connection.stat.close();
             connection.result.close();
