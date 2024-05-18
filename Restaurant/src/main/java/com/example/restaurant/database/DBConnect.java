@@ -9,7 +9,7 @@ public class DBConnect {
     public PreparedStatement pstat;
     public DBConnect(){
         try{
-            String url = "jdbc:sqlserver://localhost;database=DB_Restaurant;user=fatih;password=polman";
+            String url = "jdbc:sqlserver://localhost;database=DB_Restaurant;username=sa;password=12345;";
             conn = DriverManager.getConnection(url);
             stat = conn.createStatement();
         }

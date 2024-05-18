@@ -51,6 +51,8 @@ public class MenuController implements Initializable{
         ObservableList<String> jenisMenuList = FXCollections.observableArrayList(
                 "Makanan", "Minuman", "Paket");
 
+        txtIdMenu.setDisable(true);
+
         loadMenu();
 
         cbJenisMenu.setItems(jenisMenuList);
@@ -197,6 +199,7 @@ public class MenuController implements Initializable{
             connection.pstat.setInt(4, jenis);
             connection.pstat.setInt(5, Integer.parseInt(txtHargaMenu.getText()));
             connection.pstat.setInt(6, Integer.parseInt(txtStokMenu.getText()));
+            connection.pstat.setInt(7,1);
             connection.pstat.executeUpdate();
             connection.pstat.close();
             System.out.println("Update Berhasil");

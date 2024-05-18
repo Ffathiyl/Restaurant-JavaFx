@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="584.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurant.menu.TransaksiController">
+   <children>
+      <AnchorPane layoutX="1.0" prefHeight="584.0" prefWidth="929.0">
+         <children>
+            <Button fx:id="btnTambah" layoutX="232.0" layoutY="398.0" mnemonicParsing="false" onAction="#addItem" prefHeight="28.0" prefWidth="272.0" text="Tambah" />
+            <Button fx:id="btnBayar" layoutX="702.0" layoutY="482.0" mnemonicParsing="false" onAction="#storeTransaction" prefHeight="28.0" prefWidth="105.0" text="Bayar" />
+            <Button fx:id="btnReset" layoutX="582.0" layoutY="482.0" mnemonicParsing="false" onAction="#resetAll" prefHeight="28.0" prefWidth="105.0" text="Reset" />
+            <Label layoutX="100.0" layoutY="449.0" text="Total Harga : " />
+            <Label fx:id="LabTotalHarga" layoutX="300.0" layoutY="449.0" prefHeight="17.0" prefWidth="232.0" text="0" />
+            <Label layoutX="242.0" layoutY="72.0" text="TRANSAKSI" />
+            <TextField id="txtId" fx:id="txtId" layoutX="232.0" layoutY="97.0" prefHeight="25.0" prefWidth="272.0" />
+            <TextField id="txtMenu" fx:id="txtMenu" layoutX="235.0" layoutY="142.0" prefHeight="25.0" prefWidth="272.0" />
+            <TextField id="txtStok" fx:id="txtStok" layoutX="235.0" layoutY="187.0" onKeyReleased="#setTotalHarga" prefHeight="25.0" prefWidth="272.0" />
+            <Label layoutX="242.0" layoutY="449.0" prefHeight="17.0" prefWidth="31.0" text="Rp" />
+            <Label layoutX="102.0" layoutY="106.0" text="ID" />
+            <TextField id="txtHarga" fx:id="txtHarga" layoutX="234.0" layoutY="234.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label layoutX="100.0" layoutY="151.0" text="Menu" />
+            <Label layoutX="99.0" layoutY="196.0" text="Stok" />
+            <Label layoutX="100.0" layoutY="243.0" text="Harga" />
+            <TableView fx:id="tableKeranjang" layoutX="538.0" layoutY="320.0" prefHeight="106.0" prefWidth="368.0">
+              <columns>
+                <TableColumn fx:id="krId" prefWidth="75.0" text="ID Menu" />
+                <TableColumn fx:id="krMenu" prefWidth="75.0" text="Menu" />
+                  <TableColumn fx:id="krKuantitas" prefWidth="75.0" text="Kuantitas" />
+                  <TableColumn fx:id="krSub" prefWidth="142.0" text="Sub Total" />
+              </columns>
+            </TableView>
+            <Label layoutX="669.0" layoutY="292.0" text="KERANJANG" />
+            <TableView fx:id="tableMenu" layoutX="538.0" layoutY="101.0" onMouseClicked="#onClickTable" prefHeight="115.0" prefWidth="368.0">
+              <columns>
+                  <TableColumn fx:id="menuId" prefWidth="75.0" text="ID Menu" />
+                <TableColumn fx:id="menuMenu" prefWidth="75.0" text="Menu" />
+                <TableColumn fx:id="menuStok" prefWidth="75.0" text="Stok" />
+                  <TableColumn fx:id="menuHarga" prefWidth="142.0" text="Harga" />
+              </columns>
+            </TableView>
+            <Label layoutX="685.0" layoutY="68.0" text="MENU" />
+            <TextField id="txtHarga" fx:id="txtKuantitas" layoutX="234.0" layoutY="330.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label layoutX="100.0" layoutY="339.0" text="Kuantitas" />
+            <TextField id="txtHarga" fx:id="txtCustomer" layoutX="234.0" layoutY="279.0" prefHeight="25.0" prefWidth="272.0" />
+            <Label layoutX="100.0" layoutY="288.0" text="Customer" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

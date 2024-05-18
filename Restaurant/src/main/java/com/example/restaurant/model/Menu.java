@@ -15,6 +15,13 @@ public class Menu {
         this.desc = desc;
     }
 
+    public Menu(Integer id, String nama, Integer stok, Integer harga){
+        this.id = id;
+        this.nama = nama;
+        this.stok = stok;
+        this.harga = harga;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -41,5 +48,9 @@ public class Menu {
 
     public String getDesc() {
         return desc;
+    }
+
+    public void setStok(Integer stok) {
+        this.stok = stok;
     }
 }

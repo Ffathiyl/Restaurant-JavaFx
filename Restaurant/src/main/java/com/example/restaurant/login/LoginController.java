@@ -53,7 +53,7 @@ public class LoginController extends Helpers {
                             showMessage(Alert.AlertType.INFORMATION, "Login Successful", "Welcome, " + loggedInAdminName + "!", 18);
                             changePage(event, "manager");
                         } else if (usr_role.equals("0")) {
-                            String loggedInCashierName = connection.result.getString("usr_nama");
+                            String loggedInCashierName = username;
                             setLoggedInCashierName(loggedInCashierName); // Set the logged-in admin's name
 
                             showMessage(Alert.AlertType.INFORMATION, "Login Successful", "Welcome, " + loggedInCashierName + "!", 18);

@@ -30,7 +30,7 @@ public class CashierController extends Helpers {
     }
 
     public void onTransactionClicked(MouseEvent mouseEvent) {
-        loadPage("transaction");
+        loadPage("transaksi");
     }
 
     public void onKeluarClicked(ActionEvent event) {
