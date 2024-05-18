@@ -122,19 +122,19 @@ public class TransaksiController implements Initializable {
         double total;
         boolean exist = false;
         if(txtId.getText().equals("")){
-            p.showMessage(Alert.AlertType.INFORMATION,"Waring" ,"menu belum terpilih!", 18);
+            p.showMessage(Alert.AlertType.WARNING,"Waring" ,"menu belum terpilih!", 18);
             return;
         }
         if(txtCustomer.getText().equals("") || txtKuantitas.getText().equals("")){
-            p.showMessage(Alert.AlertType.INFORMATION,"Waring" ,"nama customer dan kuantitas harus terisi!", 18);
+            p.showMessage(Alert.AlertType.WARNING,"Waring" ,"nama customer dan kuantitas harus terisi!", 18);
             return;
         }
         if(txtKuantitas.equals("0")){
-            p.showMessage(Alert.AlertType.INFORMATION,"Waring" ,"kuantitas tidak boleh 0!", 18);
+            p.showMessage(Alert.AlertType.WARNING,"Waring" ,"kuantitas tidak boleh 0!", 18);
             return;
         }
         if(Integer.parseInt(txtStok.getText())<Integer.parseInt(txtKuantitas.getText()) || txtStok.getText().equals("0")){
-            p.showMessage(Alert.AlertType.INFORMATION,"Waring" ,"Kuantitas melebihi batas yang ada!", 18);
+            p.showMessage(Alert.AlertType.WARNING,"Waring" ,"Kuantitas melebihi batas yang ada!", 18);
             return;
         }
         txtCustomer.setDisable(true);
