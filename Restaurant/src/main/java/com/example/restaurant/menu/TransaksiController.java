@@ -214,6 +214,7 @@ public class TransaksiController implements Initializable {
                 System.out.println(ex);
             }
         }
+        l.showMessage(Alert.AlertType.INFORMATION,"Information" ,"Transaksi berhasil!", 18);
         clearAll();
     }
 
