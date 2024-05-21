@@ -10,6 +10,7 @@ public class testControler {
     private AnchorPane scPane;
     @FXML
     private ScrollPane scPaneTest;
+    String nama;
     public void scroll(DragEvent dragEvent) {
 
     }
