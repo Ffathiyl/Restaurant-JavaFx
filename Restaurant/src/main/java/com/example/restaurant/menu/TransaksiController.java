@@ -17,6 +17,8 @@ import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class TransaksiController implements Initializable {
@@ -34,6 +36,8 @@ public class TransaksiController implements Initializable {
     private TextField txtKuantitas;
     @FXML
     private TextField txtCustomer;
+    @FXML
+    private TextField txtDate;
     @FXML
     private Button btnSimpan;
     @FXML
@@ -71,12 +75,25 @@ public class TransaksiController implements Initializable {
         txtMenu.setDisable(true);
         txtStok.setDisable(true);
         txtHarga.setDisable(true);
+        txtDate.setDisable(true);
+        txtId.setVisible(false);
+        txtDate.setText(String.valueOf(LocalDate.now()));
         loadMenu();
 
+        krId.setVisible(false);
+        menuId.setVisible(false);
         menuId.setCellValueFactory(new PropertyValueFactory<>("id"));
         menuMenu.setCellValueFactory(new PropertyValueFactory<>("nama"));
         menuStok.setCellValueFactory(new PropertyValueFactory<>("stok"));
         menuHarga.setCellValueFactory(new PropertyValueFactory<>("harga"));
+        menuHarga.setStyle("-fx-alignment: CENTER-RIGHT;");
+        krSub.setStyle("-fx-alignment: CENTER-RIGHT;");
+
+        txtKuantitas.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, event -> {
+            if(!event.getCharacter().matches("\\d")){
+                event.consume();
+            }
+        });
     }
 
     public void loadMenu(){
@@ -90,7 +107,7 @@ public class TransaksiController implements Initializable {
 
             while(connection.result.next()){
                 i++;
-                if(connection.result.getInt("mnu_status") == 1){
+                if(connection.result.getInt("mnu_status") == 1 && connection.result.getInt("mnu_stok") != 0){
                     listMenu.add(new Menu(connection.result.getInt("mnu_id"),
                             connection.result.getString("mnu_nama"),
                             connection.result.getInt("mnu_stok"),
@@ -138,7 +155,7 @@ public class TransaksiController implements Initializable {
             return;
         }
         txtCustomer.setDisable(true);
-        total = Integer.parseInt(txtKuantitas.getText()) * Double.parseDouble(txtHarga.getText());
+        total = Integer.parseInt(txtKuantitas.getText()) * convertFormatted(txtHarga.getText());
         for (int i=0;i<listKeranjang.size();i++){
             if(listKeranjang.get(i).getId() == Integer.parseInt(txtId.getText())){
                 listKeranjang.get(i).setQty(listKeranjang.get(i).getQty()+Integer.parseInt(txtKuantitas.getText()));
@@ -162,6 +179,11 @@ public class TransaksiController implements Initializable {
                 break;
             }
         }
+        for (int i=0;i<listMenu.size();i++){
+            if(listMenu.get(i).getStok()==0){
+                listMenu.remove(i);
+            }
+        }
         tableMenu.refresh();
 
         total = 0;
@@ -169,7 +191,7 @@ public class TransaksiController implements Initializable {
             total += listKeranjang.get(i).getTotal();
         }
 
-        LabTotalHarga.setText(String.valueOf(total));
+        LabTotalHarga.setText(priceFormat(total));
         clearTxt();
     }
 
@@ -178,15 +200,16 @@ public class TransaksiController implements Initializable {
         LoginController l = new LoginController();
         String query;
         int id=0;
-        if(listKeranjang == null){
-            System.out.println("keranjang masih kosong!");
+        if(listKeranjang.size() == 0){
+            LoginController loginController = new LoginController();
+            loginController.showMessage(Alert.AlertType.INFORMATION, "Warning", "Keranjang masih kosong!", 18);
             return;
         }
         try {
             query = "EXEC sp_Transaksi ?,?,?";
             connect.pstat = connect.conn.prepareStatement(query);
             connect.pstat.setString(1,txtCustomer.getText());
-            connect.pstat.setDouble(2,Double.parseDouble(LabTotalHarga.getText()));
+            connect.pstat.setDouble(2,convertFormatted(LabTotalHarga.getText()));
             connect.pstat.setString(3,l.getLoggedInCashierName());
 
             connect.pstat.executeUpdate();
@@ -238,6 +261,31 @@ public class TransaksiController implements Initializable {
         txtId.setText(ob.getId().toString());
         txtMenu.setText(ob.getNama());
         txtStok.setText(ob.getStok().toString());
-        txtHarga.setText(ob.getHarga().toString());
+        txtHarga.setText(priceFormat(ob.getHarga()));
+    }
+
+    public String priceFormat(Double price){
+        DecimalFormat fmt = new DecimalFormat("###,###");
+        return fmt.format(price);
+    }
+
+    public String priceFormat(int price){
+        DecimalFormat fmt = new DecimalFormat("###,###");
+        return fmt.format(price);
+    }
+
+    public double convertFormatted(String price){
+        price = price.replace(".","");
+        price = price.replace(",",".");
+        try {
+            return Double.parseDouble(price);
+        }catch (NumberFormatException ex){
+            ex.printStackTrace();
+            return 0;
+        }
+    }
+
+    public void numericInput(KeyEvent keyEvent) {
+
     }
 }
