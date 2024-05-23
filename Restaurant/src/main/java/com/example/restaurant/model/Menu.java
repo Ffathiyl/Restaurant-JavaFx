@@ -50,7 +50,7 @@ public class Menu {
         return desc;
     }
 
-    public String getfHarga() { return fHarga; }
+    public String getFHarga() { return fHarga; }
 
     public void setStok(Integer stok) {
         this.stok = stok;

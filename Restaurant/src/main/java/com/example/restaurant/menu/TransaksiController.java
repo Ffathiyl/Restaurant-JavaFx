@@ -59,7 +59,7 @@ public class TransaksiController implements Initializable {
     @FXML
     private TableColumn<com.example.restaurant.model.Transaksi,Integer> krKuantitas;
     @FXML
-    private TableColumn<com.example.restaurant.model.Transaksi,Double> krSub;
+    private TableColumn<com.example.restaurant.model.Transaksi,String> krSub;
     @FXML
     private ObservableList<com.example.restaurant.model.Menu> listMenu = FXCollections.observableArrayList();
     @FXML
@@ -159,14 +159,14 @@ public class TransaksiController implements Initializable {
         for (int i=0;i<listKeranjang.size();i++){
             if(listKeranjang.get(i).getId() == Integer.parseInt(txtId.getText())){
                 listKeranjang.get(i).setQty(listKeranjang.get(i).getQty()+Integer.parseInt(txtKuantitas.getText()));
-                listKeranjang.get(i).setTotal(listKeranjang.get(i).getTotal()+total);
+                listKeranjang.get(i).setTotal(priceFormat(convertFormatted(listKeranjang.get(i).getTotal())+total));
                 exist = true;
                 break;
             }
         }
         tableKeranjang.refresh();
         if(!exist){
-            listKeranjang.add(new Transaksi(Integer.parseInt(txtKuantitas.getText()),Integer.parseInt(txtId.getText()),total, txtMenu.getText()));
+            listKeranjang.add(new Transaksi(Integer.parseInt(txtKuantitas.getText()),Integer.parseInt(txtId.getText()),priceFormat(total), txtMenu.getText()));
             tableKeranjang.setItems(listKeranjang);
             krKuantitas.setCellValueFactory(new PropertyValueFactory<>("qty"));
             krId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -188,7 +188,7 @@ public class TransaksiController implements Initializable {
 
         total = 0;
         for (int i=0;i<listKeranjang.size();i++){
-            total += listKeranjang.get(i).getTotal();
+            total += convertFormatted(listKeranjang.get(i).getTotal());
         }
 
         LabTotalHarga.setText(priceFormat(total));
@@ -261,7 +261,7 @@ public class TransaksiController implements Initializable {
         txtId.setText(ob.getId().toString());
         txtMenu.setText(ob.getNama());
         txtStok.setText(ob.getStok().toString());
-        txtHarga.setText(ob.getHarga().toString());
+        txtHarga.setText(ob.getFHarga());
     }
 
     public String priceFormat(Double price){

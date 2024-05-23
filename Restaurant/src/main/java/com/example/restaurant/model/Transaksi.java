@@ -2,10 +2,9 @@ package com.example.restaurant.model;
 
 public class Transaksi {
     Integer qty,id;
-    double total;
-    String menu;
+    String menu, total;
 
-    public Transaksi(Integer qty, Integer id, double total, String menu) {
+    public Transaksi(Integer qty, Integer id, String total, String menu) {
         this.qty = qty;
         this.id = id;
         this.total = total;
@@ -22,7 +21,7 @@ public class Transaksi {
         return id;
     }
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
@@ -30,7 +29,7 @@ public class Transaksi {
         return menu;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 
