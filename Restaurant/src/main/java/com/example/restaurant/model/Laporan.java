@@ -1,11 +1,10 @@
 package com.example.restaurant.model;
 
 public class Laporan {
-    String nama,tgl,kasir,menu;
-    double total,sub;
+    String nama,tgl,kasir,menu,total,sub;
     Integer kuantitas,id;
 
-    public Laporan(Integer id,String nama,String tanggal,String kasir, double total){
+    public Laporan(Integer id,String nama,String tanggal,String kasir, String total){
         this.id = id;
         this.nama = nama;
         this.tgl = tanggal;
@@ -13,7 +12,7 @@ public class Laporan {
         this.total = total;
     }
 
-    public Laporan(String menu, Integer kuantitas, double sub){
+    public Laporan(String menu, Integer kuantitas, String sub){
         this.menu = menu;
         this.kuantitas = kuantitas;
         this.sub = sub;
@@ -31,11 +30,11 @@ public class Laporan {
         return kasir;
     }
 
-    public double getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public double getSub() {
+    public String getSub() {
         return sub;
     }
 

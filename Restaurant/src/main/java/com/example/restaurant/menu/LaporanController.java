@@ -31,13 +31,13 @@ public class LaporanController implements Initializable {
     @FXML
     private TableColumn<com.example.restaurant.model.Laporan,String> trKasir;
     @FXML
-    private TableColumn<com.example.restaurant.model.Laporan,Double> trTotal;
+    private TableColumn<com.example.restaurant.model.Laporan,String> trTotal;
     @FXML
     private TableColumn<com.example.restaurant.model.Laporan,Integer> dtMenu;
     @FXML
     private TableColumn<com.example.restaurant.model.Laporan,Integer> dtKuantitas;
     @FXML
-    private TableColumn<com.example.restaurant.model.Laporan,Double> dtSub;
+    private TableColumn<com.example.restaurant.model.Laporan,String> dtSub;
     @FXML
     private TableView TabelTransaksi;
     @FXML
@@ -50,16 +50,20 @@ public class LaporanController implements Initializable {
     private ObservableList<com.example.restaurant.model.Laporan> listFilter = FXCollections.observableArrayList();
     @FXML
     private Label LabTotal;
+    TransaksiController lib = new TransaksiController();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadTransaksi();
 
+        trId.setVisible(false);
         trId.setCellValueFactory(new PropertyValueFactory<>("id"));
         trNama.setCellValueFactory(new PropertyValueFactory<>("nama"));
         trTanggal.setCellValueFactory(new PropertyValueFactory<>("tgl"));
         trKasir.setCellValueFactory(new PropertyValueFactory<>("kasir"));
         trTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        trTotal.setStyle("-fx-alignment: CENTER-RIGHT;");
+        dtSub.setStyle("-fx-alignment: CENTER-RIGHT;");
     }
 
     public void trClicked(MouseEvent mouseEvent) {
@@ -98,9 +102,9 @@ public class LaporanController implements Initializable {
     public String totalTransaksi(ObservableList<com.example.restaurant.model.Laporan> list){
         double total = 0;
         for (int i = 0;i<list.size();i++){
-            total += list.get(i).getTotal();
+            total += lib.convertFormatted(list.get(i).getTotal());
         }
-        return String.valueOf(total);
+        return String.valueOf(lib.priceFormat(total));
     }
 
 
@@ -119,7 +123,7 @@ public class LaporanController implements Initializable {
                         connection.result.getString("psn_pelanggan"),
                         connection.result.getString("psn_tanggal"),
                         connection.result.getString("psn_createby"),
-                        connection.result.getDouble("psn_total")));
+                        lib.priceFormat(connection.result.getDouble("psn_total"))));
             }
             connection.stat.close();
             connection.result.close();
@@ -151,7 +155,7 @@ public class LaporanController implements Initializable {
                 qty = connection.result.getInt("dtl_quantity");
                 listDetail.add(new Laporan(connection.result.getString("mnu_nama"),
                         qty,
-                        connection.result.getDouble("mnu_harga")*qty
+                        lib.priceFormat(connection.result.getDouble("mnu_harga")*qty)
                 ));
             }
             connection.stat.close();
