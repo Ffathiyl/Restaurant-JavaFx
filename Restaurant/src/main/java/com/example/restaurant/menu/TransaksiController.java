@@ -45,13 +45,13 @@ public class TransaksiController implements Initializable {
     @FXML
     private Button btnBayar;
     @FXML
-    private TableColumn<com.example.restaurant.model.Transaksi,Integer> menuId;
+    private TableColumn<com.example.restaurant.model.Menu,Integer> menuId;
     @FXML
-    private TableColumn<com.example.restaurant.model.Transaksi,String> menuMenu;
+    private TableColumn<com.example.restaurant.model.Menu,String> menuMenu;
     @FXML
-    private TableColumn<com.example.restaurant.model.Transaksi,Integer> menuStok;
+    private TableColumn<com.example.restaurant.model.Menu,Integer> menuStok;
     @FXML
-    private TableColumn<com.example.restaurant.model.Transaksi,Integer> menuHarga;
+    private TableColumn<com.example.restaurant.model.Menu,String> menuHarga;
     @FXML
     private TableColumn<com.example.restaurant.model.Transaksi,Integer> krId;
     @FXML
@@ -85,7 +85,7 @@ public class TransaksiController implements Initializable {
         menuId.setCellValueFactory(new PropertyValueFactory<>("id"));
         menuMenu.setCellValueFactory(new PropertyValueFactory<>("nama"));
         menuStok.setCellValueFactory(new PropertyValueFactory<>("stok"));
-        menuHarga.setCellValueFactory(new PropertyValueFactory<>("harga"));
+        menuHarga.setCellValueFactory(new PropertyValueFactory<>("fHarga"));
         menuHarga.setStyle("-fx-alignment: CENTER-RIGHT;");
         krSub.setStyle("-fx-alignment: CENTER-RIGHT;");
 
@@ -111,7 +111,7 @@ public class TransaksiController implements Initializable {
                     listMenu.add(new Menu(connection.result.getInt("mnu_id"),
                             connection.result.getString("mnu_nama"),
                             connection.result.getInt("mnu_stok"),
-                            connection.result.getInt("mnu_harga")));
+                            priceFormat(connection.result.getInt("mnu_harga"))));
                 }
             }
             connection.stat.close();
@@ -261,7 +261,7 @@ public class TransaksiController implements Initializable {
         txtId.setText(ob.getId().toString());
         txtMenu.setText(ob.getNama());
         txtStok.setText(ob.getStok().toString());
-        txtHarga.setText(priceFormat(ob.getHarga()));
+        txtHarga.setText(ob.getHarga().toString());
     }
 
     public String priceFormat(Double price){
@@ -275,8 +275,7 @@ public class TransaksiController implements Initializable {
     }
 
     public double convertFormatted(String price){
-        price = price.replace(".","");
-        price = price.replace(",",".");
+        price = price.replace(",","");
         try {
             return Double.parseDouble(price);
         }catch (NumberFormatException ex){

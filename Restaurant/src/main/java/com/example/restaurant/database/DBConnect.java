@@ -12,6 +12,7 @@ public class DBConnect {
             String url = "jdbc:sqlserver://localhost;database=DB_Restaurant;username=sa;password=12345;";
             conn = DriverManager.getConnection(url);
             stat = conn.createStatement();
+            System.out.println("Connection Berhasil");
         }
         catch (Exception e){
             System.out.println("Error saat connect ke database: "+e);
@@ -20,6 +21,5 @@ public class DBConnect {
 
     public static void main(String[] args) {
         DBConnect connection = new DBConnect();
-        System.out.println("Connection Berhasil");
     }
 }

@@ -3,7 +3,7 @@ package com.example.restaurant.model;
 public class Menu {
 
     Integer id,harga,status,jenis,stok;
-    String nama,desc;
+    String nama,desc,fHarga;
 
     public Menu(Integer id, Integer harga, Integer status, Integer jenis, Integer stok, String nama, String desc) {
         this.id = id;
@@ -15,11 +15,11 @@ public class Menu {
         this.desc = desc;
     }
 
-    public Menu(Integer id, String nama, Integer stok, Integer harga){
+    public Menu(Integer id, String nama, Integer stok, String fHarga){
         this.id = id;
         this.nama = nama;
         this.stok = stok;
-        this.harga = harga;
+        this.fHarga = fHarga;
     }
 
     public Integer getId() {
@@ -49,6 +49,8 @@ public class Menu {
     public String getDesc() {
         return desc;
     }
+
+    public String getfHarga() { return fHarga; }
 
     public void setStok(Integer stok) {
         this.stok = stok;
