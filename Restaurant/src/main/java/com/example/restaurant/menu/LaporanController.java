@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class LaporanController implements Initializable {
     @FXML
     private TextField txtNama;
+    String nama;
     @FXML
     private DatePicker datePick;
     @FXML

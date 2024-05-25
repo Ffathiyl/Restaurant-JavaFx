@@ -1,6 +1,7 @@
 package com.example.restaurant.menu;
 
 import com.example.restaurant.database.DBConnect;
+import com.example.restaurant.login.LoginController;
 import com.example.restaurant.model.Menu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,6 +52,7 @@ public class MenuController implements Initializable{
     @FXML
     private ObservableList<com.example.restaurant.model.Menu> listMenu = FXCollections.observableArrayList();
 
+    private int status;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> jenisMenuList = FXCollections.observableArrayList(
@@ -90,6 +97,9 @@ public class MenuController implements Initializable{
                 }
             };
         });
+
+        addNumericValidator(txtStokMenu);
+        addNumericValidatorWithCurrencyFormat(txtHargaMenu);
     }
     public void loadMenu(){
         listMenu.clear();
@@ -143,6 +153,20 @@ public class MenuController implements Initializable{
         stok = Integer.parseInt(txtStokMenu.getText());
         nama = txtNamaMenu.getText();
         deskripsi = txtDeskripsiMenu.getText();
+        String hargaStr = txtHargaMenu.getText();
+        String stokStr = txtStokMenu.getText();
+
+        if (nama.isEmpty() || deskripsi.isEmpty() || hargaStr.isEmpty() || stokStr.isEmpty() || jenis == -1) {
+            LoginController loginController = new LoginController();
+            loginController.showMessage(Alert.AlertType.INFORMATION, "WARNING", "SEMUA DATA WAJIB DI ISI.", 18);
+            return;
+        }
+
+        if(stok <= 0){
+            LoginController loginController = new LoginController();
+            loginController.showMessage(Alert.AlertType.INFORMATION, "WARNING", "STOCK KURANG DARI MINIMAL.", 18);
+            return;
+        }
 
         try{
             String query = "EXEC sp_inputMsMenu ?,?,?,?,?,?";
@@ -162,6 +186,51 @@ public class MenuController implements Initializable{
         }
         clearInput();
     }
+
+    private void addNumericValidator(TextField textField) {
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    textField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+    }
+
+    private void addNumericValidatorWithCurrencyFormat(TextField textField) {
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            private boolean changing = false;
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (changing) return;
+
+                changing = true;
+
+                // Remove all non-digit characters for parsing
+                String numericValue = newValue.replaceAll("[^\\d]", "");
+
+                // Format the numeric value with thousand separators
+                StringBuilder formattedValue = new StringBuilder();
+                int length = numericValue.length();
+                for (int i = 0; i < length; i++) {
+                    // Append the character
+                    formattedValue.append(numericValue.charAt(i));
+                    // Insert a separator after every three digits, except for the last group
+                    if ((length - i) % 3 == 1 && i != length - 1) {
+                        formattedValue.append(".");
+                    }
+                }
+
+                // Update the text field
+                textField.setText(formattedValue.toString());
+
+                changing = false;
+            }
+        });
+    }
+
 
     public void clearInput(){
         txtHargaMenu.setText("");
@@ -190,6 +259,32 @@ public class MenuController implements Initializable{
             default:
                 jenis = -1;
         }
+
+        String nama = txtNamaMenu.getText();
+        String deskripsi = txtDeskripsiMenu.getText();
+        String hargaStr = txtHargaMenu.getText();
+        String stokStr = txtStokMenu.getText();
+
+        if (status == 0){
+            LoginController loginController = new LoginController();
+            loginController.showMessage(Alert.AlertType.INFORMATION, "WARNING", "DATA SUDAH DI HAPUS", 18);
+            return;
+        }
+
+        if (nama.isEmpty() || deskripsi.isEmpty() || hargaStr.isEmpty() || stokStr.isEmpty() || jenis == -1) {
+            LoginController loginController = new LoginController();
+            loginController.showMessage(Alert.AlertType.INFORMATION, "WARNING", "SEMUA DATA WAJIB DI ISI, .", 18);
+            return;
+        }
+
+        if(Integer.parseInt(txtStokMenu.getText()) <= 0){
+            LoginController loginController = new LoginController();
+            loginController.showMessage(Alert.AlertType.INFORMATION, "WARNING", "STOCK KURANG DARI MINIMAL.", 18);
+            return;
+        }
+
+
+
         try {
             String query = "EXEC sp_updateMsMenu ?,?,?,?,?,?,?";
             connection.pstat = connection.conn.prepareStatement(query);
@@ -218,6 +313,12 @@ public class MenuController implements Initializable{
     @FXML
     protected void onClickHapus(){
         DBConnect connection = new DBConnect();
+        if (status == 0){
+                LoginController loginController = new LoginController();
+                loginController.showMessage(Alert.AlertType.INFORMATION, "WARNING", "DATA SUDAH DI HAPUS", 18);
+                return;
+        }
+
         try{
             String query = "EXEC sp_deleteMsMenu ?";
             connection.pstat = connection.conn.prepareStatement(query);
@@ -240,6 +341,7 @@ public class MenuController implements Initializable{
         txtDeskripsiMenu.setText(ob.getDesc());
         txtHargaMenu.setText(ob.getHarga().toString());
         txtStokMenu.setText(ob.getStok().toString());
+        status = Integer.parseInt(ob.getStatus().toString());
         String jenis;
         switch (ob.getJenis()) {
             case 0:
